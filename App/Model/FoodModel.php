@@ -14,7 +14,7 @@ class FoodModel extends BaseModel
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $data['name']);
         $stmt->bindParam(2, $data['image']);
-        $stmt->excute();
+        $stmt->execute();
     }
 
     public function update($data,$id)
@@ -23,6 +23,6 @@ class FoodModel extends BaseModel
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1,$data['name']);
         $stmt->bindParam(2,$data['image']);
-        Sstmt->excute();
+        $stmt->execute();
     }
 }

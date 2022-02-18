@@ -18,10 +18,12 @@ $page = $_GET['page'] ?? "";
 <body>
 <a href="index.php?page=food-list">FoodList</a>
 <?php
-switch ($page){
+switch ($page) {
     case "food-list":
         $foodcontroller->getAll();
         break;
+    case "food-create":
+        $foodcontroller->c
 }
 ?>
 

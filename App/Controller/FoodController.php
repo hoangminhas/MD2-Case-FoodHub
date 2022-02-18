@@ -12,7 +12,10 @@ class FoodController
 
     public function getAll()
     {
-       $foods = $this->foodModel->getAll();
+        $foods = $this->foodModel->getAll();
         include "App/View/Food-Restaurant/food-list.php";
+    }
+    public function create($data){
+        if ($_SERVER)
     }
 }
