@@ -5,7 +5,6 @@ use App\Controller\FoodController;
 use App\Controller\AuthController;
 
 require "vendor/autoload.php";
-
 $authController = new AuthController();
 $foodcontroller = new FoodController();
 $page = $_GET['page'] ?? "";
@@ -20,18 +19,35 @@ $page = $_GET['page'] ?? "";
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
 <!--<a href="index.php?page=food-list">FoodList</a>-->
-=======
+
 <a href="index.php?page=food-list">FoodList</a>
 <a href="index.php?page=food-create">FoodCreate</a>
->>>>>>> e4aaaf461cc81ab3c591f94fb04a6297d375658f
+<br>
+<a href="index.php?page=food-detail">Food Detail</a>
+
+
 <?php
 switch ($page) {
     case "food-list":
         $foodcontroller->getAll();
         break;
-<<<<<<< HEAD
+    case "food-detail":
+        $foodcontroller->createDetail();
+            break;
+    case "food-create":
+        $foodcontroller->create($_POST);
+        break;
+    case "food-update":
+        $foodcontroller->update($_POST,$_REQUEST['id']);
+        break;
+    case "food-delete":
+        $foodcontroller->delete($_REQUEST['id']);
+        break;
+
+
+
+
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $authController->showFormLogin();
@@ -44,17 +60,6 @@ switch ($page) {
         break;
     default:
         header("location:index.php?page=login");
-=======
-    case "food-create":
-        $foodcontroller->create($_POST);
-        break;
-    case "food-update":
-        $foodcontroller->update($_POST,$_REQUEST['id']);
-        break;
-    case "food-delete":
-        $foodcontroller->delete($_REQUEST['id']);
-        break;
->>>>>>> e4aaaf461cc81ab3c591f94fb04a6297d375658f
 }
 ?>
 

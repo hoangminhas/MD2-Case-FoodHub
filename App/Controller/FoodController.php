@@ -1,15 +1,16 @@
 <?php
 namespace App\Controller;
 use App\Model\FoodModel;
-use App\Model\FootDetailModel;
+use App\Model\FoodDetailModel;
 
 class FoodController
 {
     public $foodModel;
+    public $foodDetail;
     public function __construct()
     {
         $this->foodModel = new FoodModel();
-
+        $this->foodDetail = new FoodDetailModel();
     }
 
     public function getAll()
@@ -47,6 +48,22 @@ class FoodController
            return $target_file;
         } else {
             return $default;
+        }
+    }
+
+// Thêm mô tả món
+    public function createDetail(){
+        if ($_SERVER["REQUEST_METHOD"]== "GET"){
+            include "App/View/FoodDetail/create.php";
+        }
+        else {
+            $data=[
+                "name"=>$_REQUEST["name"],
+                "description"=>$_REQUEST["description"],
+                "price"=>$_REQUEST["price"]
+            ];
+            $this->foodDetail->create($data);
+            header("location:index.php?page=food-detail");
         }
     }
 }

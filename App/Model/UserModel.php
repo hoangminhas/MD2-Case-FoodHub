@@ -20,7 +20,7 @@ class UserModel extends BaseModel
 
     public function getByEmail($email)
     {
-        $sql = "SELECT * FROM $this->table WHERE emai=?";
+        $sql = "SELECT * FROM $this->table WHERE email=?";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $email);
         $stmt->execute();
