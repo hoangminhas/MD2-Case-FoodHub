@@ -20,13 +20,14 @@ class UserModel extends BaseModel
 
     public function getByEmail($email)
     {
-        $sql = "SELECT * FROM $this->table WHERE emai=?";
+        $sql = "SELECT * FROM $this->table WHERE email=?";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $email);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    // check role cua user
     public function checkRole($id)
     {
         $sql = "select users.email, role.name from users join role on users.role_id = role.id where users.id=?";

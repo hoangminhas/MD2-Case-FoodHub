@@ -17,7 +17,12 @@ class AuthController
     {
         if ($this->userModel->checkLogin($request["email"], $request["password"])) {
             $_SESSION["user"] = $this->userModel->getByEmail($request["email"]);
+            $role = $this->userModel->checkRole($_SESSION['user']->id);
+            if ($role->name == "restaurant") {
                 header("location:index.php?page=food-list");
+            } elseif ($role->name == "customer") {
+                header("location:index.php?page=login");
+            }
         } else {
             header("location:index.php?page=login");
         }
@@ -26,7 +31,9 @@ class AuthController
     public function showFormLogin()
     {
         if (isset($_SESSION["user"])) {
-            header("location:index.php?page=food-list");
+            if ($_SESSION["user"]->id->name == "restaurant") {
+                header("location:index.php?page=food-list");
+            }
         }
         include "App/View/auth/login.php";
     }

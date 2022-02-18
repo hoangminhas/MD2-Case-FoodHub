@@ -1,5 +1,8 @@
+<div class="nav-bar">
+    <?php include "App/View/layout/navbar.php"?>
+</div>
+<!--<a href="index.php?page=food-create">FoodCreate</a>-->
 <table border="3px">
-    <a href="index.php?page=logout">Log Out</a>
     <tr>
         <th>Name</th>
         <th>Image</th>
