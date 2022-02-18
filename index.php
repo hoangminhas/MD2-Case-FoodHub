@@ -20,12 +20,18 @@ $page = $_GET['page'] ?? "";
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
 <!--<a href="index.php?page=food-list">FoodList</a>-->
+=======
+<a href="index.php?page=food-list">FoodList</a>
+<a href="index.php?page=food-create">FoodCreate</a>
+>>>>>>> e4aaaf461cc81ab3c591f94fb04a6297d375658f
 <?php
-switch ($page){
+switch ($page) {
     case "food-list":
         $foodcontroller->getAll();
         break;
+<<<<<<< HEAD
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $authController->showFormLogin();
@@ -38,6 +44,17 @@ switch ($page){
         break;
     default:
         header("location:index.php?page=login");
+=======
+    case "food-create":
+        $foodcontroller->create($_POST);
+        break;
+    case "food-update":
+        $foodcontroller->update($_POST,$_REQUEST['id']);
+        break;
+    case "food-delete":
+        $foodcontroller->delete($_REQUEST['id']);
+        break;
+>>>>>>> e4aaaf461cc81ab3c591f94fb04a6297d375658f
 }
 ?>
 
