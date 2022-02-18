@@ -17,13 +17,21 @@ $page = $_GET['page'] ?? "";
 </head>
 <body>
 <a href="index.php?page=food-list">FoodList</a>
+<a href="index.php?page=food-create">FoodCreate</a>
 <?php
 switch ($page) {
     case "food-list":
         $foodcontroller->getAll();
         break;
     case "food-create":
-        $foodcontroller->c
+        $foodcontroller->create($_POST);
+        break;
+    case "food-update":
+        $foodcontroller->update($_POST,$_REQUEST['id']);
+        break;
+    case "food-delete":
+        $foodcontroller->delete($_REQUEST['id']);
+        break;
 }
 ?>
 
