@@ -6,14 +6,14 @@ use App\Model\FoodDetailModel;
 class FoodController
 {
     public $foodModel;
-    public $foodDetail;
+    public $foodDetailModel;
     public function __construct()
     {
         $this->foodModel = new FoodModel();
-        $this->foodDetail = new FoodDetailModel();
+        $this->foodDetailModel = new FoodDetailModel();
     }
 
-    public function getAll()
+    public function showAll()
     {
         $foods = $this->foodModel->getAll();
         include "App/View/Food-Restaurant/food-list.php";
@@ -21,12 +21,23 @@ class FoodController
     public function delete($id){
         $this->foodModel->deleteById($id);
     }
+
+
+    public function showFormCreate()
+    {
+        $foodDetails = $this->foodDetailModel->getAll();
+        include_once "App/View/Food-Restaurant/food-create.php";
+    }
     public function create($request){
         if ($_SERVER['REQUEST_METHOD']=="GET"){
             include "App/View/Food-Restaurant/food-create.php";
         }else{
-            $request['image'] = $this->UploadImg();
-            $this->foodModel->create($request);
+            $data=[
+                "name"=>$_REQUEST["name"],
+                "price"=>$_REQUEST["price"],
+                "description"=>$_REQUEST["description"],
+            $request['image'] = $this->UploadImg() ];
+            $this->foodModel->create($data);
             header("location:index.php?page=food-list");
         }
     }
@@ -51,19 +62,19 @@ class FoodController
         }
     }
 
-
-    public function createDetail(){
-        if ($_SERVER["REQUEST_METHOD"]== "GET"){
-            include "App/View/FoodDetail/create.php";
-        }
-        else {
-            $data=[
-                "name"=>$_REQUEST["name"],
-                "description"=>$_REQUEST["description"],
-                "price"=>$_REQUEST["price"]
-            ];
-            $this->foodDetail->create($data);
-            header("location:index.php?page=food-detail");
-        }
-    }
+//
+//    public function createDetail(){
+//        if ($_SERVER["REQUEST_METHOD"]== "GET"){
+//            include "App/View/FoodDetail/create.php";
+//        }
+//        else {
+//            $data=[
+//                "name"=>$_REQUEST["name"],
+//                "description"=>$_REQUEST["description"],
+//                "price"=>$_REQUEST["price"]
+//            ];
+//            $this->foodDetail->create($data);
+//            header("location:index.php?page=food-detail");
+//        }
+//    }
 }
