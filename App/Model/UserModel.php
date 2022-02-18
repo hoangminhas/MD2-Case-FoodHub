@@ -27,8 +27,12 @@ class UserModel extends BaseModel
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    public function checkRole()
+    public function checkRole($id)
     {
-        
+        $sql = "select users.email, role.name from users join role on users.role_id = role.id where users.id=?";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 }

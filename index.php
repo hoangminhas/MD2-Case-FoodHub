@@ -1,8 +1,12 @@
 <?php
+session_start();
 
 use App\Controller\FoodController;
+use App\Controller\AuthController;
 
 require "vendor/autoload.php";
+
+$authController = new AuthController();
 $foodcontroller = new FoodController();
 $page = $_GET['page'] ?? "";
 ?>
@@ -16,12 +20,24 @@ $page = $_GET['page'] ?? "";
     <title>Document</title>
 </head>
 <body>
-<a href="index.php?page=food-list">FoodList</a>
+<!--<a href="index.php?page=food-list">FoodList</a>-->
 <?php
 switch ($page){
     case "food-list":
         $foodcontroller->getAll();
         break;
+    case "login":
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $authController->showFormLogin();
+        } else {
+            $authController->login($_REQUEST);
+        }
+        break;
+    case 'logout':
+        $authController->logout();
+        break;
+    default:
+        header("location:index.php?page=login");
 }
 ?>
 

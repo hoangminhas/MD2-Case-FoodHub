@@ -1,4 +1,5 @@
-<table>
+<table border="3px">
+    <a href="index.php?page=logout">Log Out</a>
     <tr>
         <th>Name</th>
         <th>Image</th>
