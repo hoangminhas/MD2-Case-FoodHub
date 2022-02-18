@@ -27,6 +27,7 @@ class UserModel extends BaseModel
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    // check role cua user
     public function checkRole($id)
     {
         $sql = "select users.email, role.name from users join role on users.role_id = role.id where users.id=?";

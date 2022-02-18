@@ -25,4 +25,5 @@ class FoodModel extends BaseModel
         $stmt->bindParam(2,$data['image']);
         $stmt->execute();
     }
+
 }

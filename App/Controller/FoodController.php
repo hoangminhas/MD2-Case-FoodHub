@@ -51,7 +51,7 @@ class FoodController
         }
     }
 
-// Thêm mô tả món
+
     public function createDetail(){
         if ($_SERVER["REQUEST_METHOD"]== "GET"){
             include "App/View/FoodDetail/create.php";
