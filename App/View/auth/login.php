@@ -1,4 +1,4 @@
-
+<?php namespace App\View\auth; ?>
 <!DOCTYPE html>
 <html>
 
@@ -52,7 +52,7 @@
 
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                    <a href="#" class="ml-2" style="color: #a9d2f3">Sign Up</a>
+                    <a href="././index.php?page=signup" class="ml-2" style="color: #a9d2f3">Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center links">
                     <a style="color: #77a3cf" href="#">Forgot your password?</a>

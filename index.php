@@ -45,9 +45,9 @@ switch ($page) {
     case "cm-food-list":
         $userController->getAllRestaurant();
         break;
-        case "cm-food-create":
-        $userController->createUser($_POST);
-        break;
+//        case "cm-food-create":
+//        $userController->createUser($_POST);
+//        break;
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $authController->showFormLogin();
@@ -57,6 +57,13 @@ switch ($page) {
         break;
     case 'logout':
         $authController->logout();
+        break;
+    case 'signup':
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $authController->showFormSignUp();
+        } else {
+            $authController->signup($_REQUEST);
+        }
         break;
     default:
         header("location:index.php?page=login");
