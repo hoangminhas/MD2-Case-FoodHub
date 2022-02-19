@@ -22,6 +22,12 @@ class FoodModel extends BaseModel
         $stmt3 = $this->connect->query($sql3);
         $e = $stmt3->fetch(\PDO::FETCH_OBJ);
 
+//        //lay id cua user
+//        $sql4 = "select id from users order by id desc limit 1";
+//        $stmt4 = $this->connect->query($sql4);
+//        $u = $stmt4->fetch(\PDO::FETCH_OBJ);
+
+
         //them du lieu vao food_detail
         $sql2 = "INSERT INTO food_detail (name, description, price, food_id) values (?,?,?,?)";
         $stmt2 = $this->connect->prepare($sql2);
@@ -29,8 +35,23 @@ class FoodModel extends BaseModel
         $stmt2->bindParam(2, $data["description"]);
         $stmt2->bindParam(3, $data["price"]);
         $stmt2->bindParam(4, $e->id);
+//        $stmt2->bindParam(5, $u->id);
         $stmt2->execute();
 
+
+
+
+//
+//
+// //them du lieu vao user
+//        $sql4 = "INSERT INTO users (name, phone, email, password) values (?,?,?,?)";
+//        $stmt4 = $this->connect->prepare($sql4);
+//        $stmt4->bindParam(1, $data["name"]);
+//        $stmt4->bindParam(2, $data["phone"]);
+//        $stmt4->bindParam(3, $data["email"]);
+//        $stmt4->bindParam(4, $data["password"]);
+//        $stmt4->execute();
+//
 
     }
 
