@@ -52,6 +52,13 @@ switch ($page) {
     case 'logout':
         $authController->logout();
         break;
+    case 'signup':
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $authController->showFormSignUp();
+        } else {
+            $authController->signup($_REQUEST);
+        }
+        break;
     default:
         header("location:index.php?page=login");
 }

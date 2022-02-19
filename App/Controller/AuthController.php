@@ -28,6 +28,24 @@ class AuthController
         }
     }
 
+    public function signup($request)
+    {
+        include "App/View/auth/signup.php";
+        if (!$this->userModel->checkSignUp($request["email"])) {
+            $this->userModel->addUser($request);
+            echo "Dang ky thanh cong";
+            echo "<br>";
+            echo "<a href='index.php?page=login'>Login</a>";
+        } else {
+            echo "Email da duoc su dung";
+        }
+    }
+
+    public function showFormSignUp()
+    {
+        include "App/View/auth/signup.php";
+    }
+
     public function showFormLogin()
     {
         if (isset($_SESSION["user"])) {
