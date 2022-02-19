@@ -18,7 +18,8 @@ class FoodController
         include "App/View/Food-Restaurant/food-list.php";
     }
     public function delete($id){
-        $this->foodModel->deleteById($id);
+        $this->foodModel->deleteFoodById($id);
+        header("location:index.php?page=food-list");
     }
     public function create($request){
         if ($_SERVER['REQUEST_METHOD']=="GET"){

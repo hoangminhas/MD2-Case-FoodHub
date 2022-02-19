@@ -48,7 +48,7 @@ switch ($page) {
         $foodcontroller->update($_POST,$_REQUEST['id']);
         break;
     case "food-delete":
-        $foodcontroller->delete($_REQUEST['id']);
+        $foodcontroller->delete($_GET['id']);
         break;
     default:
         header("location:index.php?page=login");
