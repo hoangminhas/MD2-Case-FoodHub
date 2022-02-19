@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller;
 use App\Model\FoodModel;
-use App\Model\FoodDetailModel;
 
 class FoodController
 {
@@ -10,10 +9,9 @@ class FoodController
     public function __construct()
     {
         $this->foodModel = new FoodModel();
-        $this->foodDetailModel = new FoodDetailModel();
     }
 
-    public function showAll()
+    public function getAll()
     {
         $foods = $this->foodModel->getAll();
         include "App/View/Food-Restaurant/food-list.php";
@@ -23,21 +21,13 @@ class FoodController
     }
 
 
-    public function showFormCreate()
-    {
-        $foodDetails = $this->foodDetailModel->getAll();
-        include_once "App/View/Food-Restaurant/food-create.php";
-    }
+
     public function create($request){
         if ($_SERVER['REQUEST_METHOD']=="GET"){
             include "App/View/Food-Restaurant/food-create.php";
         }else{
-            $data=[
-                "name"=>$_REQUEST["name"],
-                "price"=>$_REQUEST["price"],
-                "description"=>$_REQUEST["description"],
-            $request['image'] = $this->UploadImg() ];
-            $this->foodModel->create($data);
+            $request['image'] = $this->UploadImg();
+            $this->foodModel->create($request);
             header("location:index.php?page=food-list");
         }
     }

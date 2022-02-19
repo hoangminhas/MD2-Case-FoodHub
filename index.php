@@ -3,12 +3,10 @@ session_start();
 
 use App\Controller\FoodController;
 use App\Controller\AuthController;
-use App\Controller\FoodDetailController;
 
 require "vendor/autoload.php";
 $authController = new AuthController();
 $foodcontroller = new FoodController();
-$foodDetailController = new FoodDetailController();
 $page = $_GET['page'] ?? "";
 ?>
 <!doctype html>
@@ -23,7 +21,6 @@ $page = $_GET['page'] ?? "";
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
-<!--<a href="index.php?page=food-list">FoodList</a>-->
 
 <a href="index.php?page=food-list">FoodList</a>
 <a href="index.php?page=food-create">FoodCreate</a>
@@ -31,26 +28,16 @@ $page = $_GET['page'] ?? "";
 <a href="index.php?page=food-detail-create">Food Detail</a>
 
 
-<!--<a href="index.php?page=food-list">FoodList</a>-->
-<!--<a href="index.php?page=food-list">FoodList</a>-->
-<!--<a href="index.php?page=food-create">FoodCreate</a>-->
 
 <?php
 switch ($page) {
     case "food-list":
-        $foodcontroller->showAll();
+        $foodcontroller->getAll();
         break;
 
 
-    case "food-detail-list":
-        $foodDetailController->showAll();
-        break;
     case "food-create":
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $foodcontroller->showFormCreate();
-        } else {
             $foodcontroller->create($_POST);
-        }
         break;
     case "food-update":
         $foodcontroller->update($_POST, $_REQUEST['id']);
