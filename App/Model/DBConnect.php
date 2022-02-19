@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+
 use PDO;
 use PDOException;
 
@@ -14,11 +15,7 @@ class DBConnect
     {
         $this->dsn = "mysql:host=localhost;dbname=foodhub;charset=utf8";
         $this->username = "root";
-
         $this->password = "root";
-
-//        $this->password = "";
-
     }
 
     public function connect()

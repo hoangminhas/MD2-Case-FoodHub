@@ -1,15 +1,14 @@
 <?php
 namespace App\Controller;
 use App\Model\FoodModel;
-use App\Model\FootDetailModel;
 
 class FoodController
 {
     public $foodModel;
+
     public function __construct()
     {
         $this->foodModel = new FoodModel();
-
     }
 
     public function getAll()
@@ -21,6 +20,9 @@ class FoodController
         $this->foodModel->deleteFoodById($id);
         header("location:index.php?page=food-list");
     }
+
+
+
     public function create($request){
         if ($_SERVER['REQUEST_METHOD']=="GET"){
             include "App/View/Food-Restaurant/food-create.php";
@@ -50,4 +52,5 @@ class FoodController
             return $default;
         }
     }
+
 }
