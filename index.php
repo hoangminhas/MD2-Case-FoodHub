@@ -3,10 +3,12 @@ session_start();
 
 use App\Controller\FoodController;
 use App\Controller\AuthController;
+use App\Controller\UserController;
 
 require "vendor/autoload.php";
 $authController = new AuthController();
 $foodcontroller = new FoodController();
+$userController = new UserController();
 $page = $_GET['page'] ?? "";
 ?>
 <!doctype html>
@@ -29,13 +31,16 @@ switch ($page) {
         $foodcontroller->getAll();
         break;
     case "food-create":
-            $foodcontroller->create($_POST);
+        $foodcontroller->create($_POST);
         break;
     case "food-update":
         $foodcontroller->update($_POST, $_REQUEST['id']);
         break;
     case "food-delete":
         $foodcontroller->delete($_REQUEST['id']);
+        break;
+    case "cm-food-list":
+        $userController->getAllRestaurant();
         break;
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {

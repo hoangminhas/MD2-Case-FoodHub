@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-center">
                 <div class="brand_logo_container">
                     <img
-                        src="https://www.nicepng.com/png/full/232-2326770_icon-blogger-logo-now-creative-group-logo.png"
+                        src="././img/foodhub.jpg"
                         class="brand_logo" alt="Logo">
                 </div>
             </div>

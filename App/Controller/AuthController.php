@@ -21,7 +21,7 @@ class AuthController
             if ($role->name == "restaurant") {
                 header("location:index.php?page=food-list");
             } elseif ($role->name == "customer") {
-                header("location:index.php?page=login");
+                header("location:index.php?page=cm-food-list");
             }
         } else {
             header("location:index.php?page=login");
