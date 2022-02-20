@@ -22,12 +22,15 @@ $page = $_GET['page'] ?? "";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="style/signup.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 
 
 <?php
 switch ($page) {
+    //view cua restaurant
     case "food-list":
         $foodcontroller->getAll($_GET['id']);
         break;
@@ -35,7 +38,7 @@ switch ($page) {
         $foodcontroller->getFoodByID($_GET['id']);
         break;
     case "food-create":
-        $foodcontroller->create($_POST,$_GET['id']);
+        $foodcontroller->create($_POST, $_GET['id']);
         break;
     case "food-update":
         $foodcontroller->update($_POST, $_REQUEST['id']);
@@ -45,13 +48,15 @@ switch ($page) {
         break;
 
 
-
-    case "cm-food-list":
+    //View cua customer
+    case "restaurant-list":
         $userController->getAllRestaurant();
         break;
+    case "restaurant-detail":
+        $userController->getDetailRestaurant($_GET['id']);
+        break;
 
-
-
+    //dang nhap & dang ky
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $authController->showFormLogin();

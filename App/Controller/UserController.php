@@ -19,7 +19,13 @@ class UserController
     public function getAllRestaurant()
     {
        $restaurants = $this->userModel->getAllRestaurant();
-        include "App/View/Food-Customer/cm-food-list.php";
+        include "App/View/Food-Customer/restaurant-list.php";
+    }
+
+    public function getDetailRestaurant($id)
+    {
+        $thisRestaurant = $this->userModel->getDetailRestaurant($id);
+        include "App/View/Food-Customer/restaurant-detail.php";
     }
 
 }

@@ -61,8 +61,16 @@ class UserModel extends BaseModel
         $stmt->execute();
 
 
+    }
 
-
-
+    public function getDetailRestaurant($id)
+    {
+        $sql = "select f.name, f.image, fd.description, fd.price, u.name, u.phone 
+                from food_detail fd
+                join food f on fd.food_id = f.id
+                join users u on u.id = fd.user_id
+                where u.id=$id";
+        $stmt = $this->connect->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }

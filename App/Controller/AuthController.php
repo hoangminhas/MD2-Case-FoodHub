@@ -21,7 +21,7 @@ class AuthController
             if ($role->name == "restaurant") {
                 header("location:index.php?page=food-list&id=$role->id");
             } elseif ($role->name == "customer") {
-                header("location:index.php?page=cm-food-list&id=$role->id");
+                header("location:index.php?page=restaurant-list&id=$role->id");
             }
         } else {
             header("location:index.php?page=login");
@@ -34,8 +34,6 @@ class AuthController
         if (!$this->userModel->checkSignUp($request["email"])) {
             $this->userModel->addUser($request);
             echo "Dang ky thanh cong";
-            echo "<br>";
-            echo "<a href='index.php?page=login'>Login</a>";
         } else {
             echo "Email da duoc su dung";
         }

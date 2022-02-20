@@ -14,8 +14,10 @@ class DBConnect
     public function __construct()
     {
         $this->dsn = "mysql:host=localhost;dbname=foodhub;charset=utf8";
-        $this->username = "luc";
-        $this->password = "123456@Abc";
+//        $this->username = "luc";
+//        $this->password = "123456@Abc";
+        $this->username = 'root';
+        $this->password = 'root';
     }
 
     public function connect()
