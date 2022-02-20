@@ -19,7 +19,7 @@ class UserController
 
     public function getAllRestaurant()
     {
-       $restaurants = $this->customerModel->getAllRestaurant();
+       $restaurants = $this->foodModel->getAllRestaurant();
         include "App/View/Food-Customer/cm-food-list.php";
     }
 
