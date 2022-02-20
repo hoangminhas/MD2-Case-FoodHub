@@ -21,6 +21,13 @@ class BaseModel
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getAllRestaurant()
+    {
+        $sql = "select * from $this->table where role_id =2";
+        $stmt = $this->connect->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function getById($id)
     {
         $sql = "select * from $this->table where id=$id";

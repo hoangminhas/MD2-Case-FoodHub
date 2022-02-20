@@ -1,11 +1,11 @@
 <?php
 session_start();
+require "vendor/autoload.php";
 
 use App\Controller\FoodController;
 use App\Controller\AuthController;
 use App\Controller\UserController;
 
-require "vendor/autoload.php";
 $authController = new AuthController();
 $foodcontroller = new FoodController();
 $userController = new UserController();
@@ -43,9 +43,15 @@ switch ($page) {
     case "food-delete":
         $foodcontroller->delete($_REQUEST['id']);
         break;
+
+
+
     case "cm-food-list":
         $userController->getAllRestaurant();
         break;
+
+
+
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $authController->showFormLogin();

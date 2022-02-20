@@ -46,6 +46,9 @@ class UserModel extends BaseModel
         return $stmt->rowCount() > 0;
     }
 
+
+
+
     public function addUser($request)
     {
         $sql = "INSERT INTO users(name, phone, email, password, role_id) values (?,?,?,?,?)";
@@ -56,5 +59,10 @@ class UserModel extends BaseModel
         $stmt->bindParam(4, $request['password']);
         $stmt->bindParam(5, $request['role']);
         $stmt->execute();
+
+
+
+
+
     }
 }
