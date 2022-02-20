@@ -46,6 +46,9 @@ class UserModel extends BaseModel
         return $stmt->rowCount() > 0;
     }
 
+
+
+
     public function addUser($request)
     {
 //        $name = $request['name'];
@@ -61,5 +64,10 @@ class UserModel extends BaseModel
         $stmt->bindParam(4, $request['password']);
         $stmt->bindParam(5, $request['role']);
         $stmt->execute();
+
+
+
+
+
     }
 }

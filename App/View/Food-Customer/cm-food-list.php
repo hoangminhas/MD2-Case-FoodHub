@@ -15,7 +15,6 @@
         <td><?php echo $restaurant->name?></td>
         <td><?php echo $restaurant->phone?></td>
         <td><?php echo $restaurant->email?></td>
-        <td><?php echo $restaurant->email?></td>
     </tr>
     <?php endforeach;?>
     </tbody>

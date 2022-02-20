@@ -45,9 +45,9 @@ switch ($page) {
     case "cm-food-list":
         $userController->getAllRestaurant();
         break;
-//        case "cm-food-create":
-//        $userController->createUser($_POST);
-//        break;
+
+
+
     case "login":
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $authController->showFormLogin();
