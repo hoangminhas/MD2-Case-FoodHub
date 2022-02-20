@@ -14,7 +14,7 @@ class BaseModel
         $this->connect = $db->connect();
     }
 
-    public function getAll()
+    public function getAll($id)
     {
         $sql = "select * from $this->table";
         $stmt = $this->connect->query($sql);

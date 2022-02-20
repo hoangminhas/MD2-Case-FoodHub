@@ -19,9 +19,9 @@ class AuthController
             $_SESSION["user"] = $this->userModel->getByEmail($request["email"]);
             $role = $this->userModel->checkRole($_SESSION['user']->id);
             if ($role->name == "restaurant") {
-                header("location:index.php?page=food-list");
+                header("location:index.php?page=food-list&id=$role->id");
             } elseif ($role->name == "customer") {
-                header("location:index.php?page=cm-food-list");
+                header("location:index.php?page=cm-food-list&id=$role->id");
             }
         } else {
             header("location:index.php?page=login");
@@ -50,7 +50,8 @@ class AuthController
     {
         if (isset($_SESSION["user"])) {
             if ($_SESSION["user"]->id->name == "restaurant") {
-                header("location:index.php?page=food-list");
+                $userId = $_SESSION["user"]->id;
+                header("location:index.php?page=food-list&id=$userId");
             }
         }
         include "App/View/auth/login.php";

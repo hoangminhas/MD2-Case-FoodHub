@@ -30,7 +30,7 @@ class UserModel extends BaseModel
     // check role cua user
     public function checkRole($id)
     {
-        $sql = "select users.email, role.name from users join role on users.role_id = role.id where users.id=?";
+        $sql = "select users.id ,users.email, role.name from users join role on users.role_id = role.id where users.id=?";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
@@ -48,11 +48,6 @@ class UserModel extends BaseModel
 
     public function addUser($request)
     {
-//        $name = $request['name'];
-//        $phone = $request['phone'];
-//        $email = $request['email'];
-//        $password = $request['password'];
-//        $role = $request['role'];
         $sql = "INSERT INTO users(name, phone, email, password, role_id) values (?,?,?,?,?)";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(1, $request['name']);

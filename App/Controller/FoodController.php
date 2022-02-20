@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 use App\Model\FoodModel;
-
+session_start();
 class FoodController
 {
     public $foodModel;
@@ -11,35 +11,45 @@ class FoodController
         $this->foodModel = new FoodModel();
     }
 
-    public function getAll()
+    public function getAll($id)
     {
-        $foods = $this->foodModel->getAll();
+        $foods = $this->foodModel->getAllFoodById($id);
         include "App/View/Food-Restaurant/food-list.php";
     }
     public function delete($id){
+        $userID = $_SESSION['user']->id;
+//        echo "<pre>";
+//        var_dump($userID);
+//        die();
         $this->foodModel->deleteFoodById($id);
-        header("location:index.php?page=food-list");
+        header("location:index.php?page=food-list&id=$userID");
     }
 
+    public function getFoodByID($id)
+    {
+        $thisFood = $this->foodModel->getFoodById($id);
+        include "App/View/Food-Restaurant/food-detail.php";
+    }
 
-
-    public function create($request){
+    public function create($request, $id){
+        $userID = $_SESSION['user']->id;
         if ($_SERVER['REQUEST_METHOD']=="GET"){
             include "App/View/Food-Restaurant/food-create.php";
         }else{
             $request['image'] = $this->UploadImg();
-            $this->foodModel->create($request);
-            header("location:index.php?page=food-list");
+            $this->foodModel->create($request,$id);
+            header("location:index.php?page=food-list&id=$userID");
         }
     }
     public function update($request,$id){
+        $userID = $_SESSION['user']->id;
         if ($_SERVER['REQUEST_METHOD']=="GET"){
-            $foods = $this->foodModel->getById($id);
+            $foods = $this->foodModel->getFoodById($id);
             include "App/View/Food-Restaurant/food-update.php";
         }else{
             $request['image'] = $this->UploadImg();
             $this->foodModel->update($request,$id);
-            header("location:index.php?page=food-list");
+            header("location:index.php?page=food-list&id=$userID");
         }
     }
     public function UploadImg($name ="default.png"){

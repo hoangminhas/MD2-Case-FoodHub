@@ -21,6 +21,7 @@ $page = $_GET['page'] ?? "";
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/signup.css">
 </head>
 <body>
 
@@ -28,10 +29,13 @@ $page = $_GET['page'] ?? "";
 <?php
 switch ($page) {
     case "food-list":
-        $foodcontroller->getAll();
+        $foodcontroller->getAll($_GET['id']);
+        break;
+    case 'food-detail':
+        $foodcontroller->getFoodByID($_GET['id']);
         break;
     case "food-create":
-        $foodcontroller->create($_POST);
+        $foodcontroller->create($_POST,$_GET['id']);
         break;
     case "food-update":
         $foodcontroller->update($_POST, $_REQUEST['id']);
