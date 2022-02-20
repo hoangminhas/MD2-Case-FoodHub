@@ -65,7 +65,7 @@ class UserModel extends BaseModel
 
     public function getDetailRestaurant($id)
     {
-        $sql = "select f.name, f.image, fd.description, fd.price, u.name, u.phone 
+        $sql = "select f.name, f.image, fd.description, fd.price, u.phone 
                 from food_detail fd
                 join food f on fd.food_id = f.id
                 join users u on u.id = fd.user_id

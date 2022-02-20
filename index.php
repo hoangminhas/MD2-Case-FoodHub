@@ -1,6 +1,6 @@
 <?php
-session_start();
 require "vendor/autoload.php";
+session_start();
 
 use App\Controller\FoodController;
 use App\Controller\AuthController;
