@@ -1,11 +1,11 @@
 <?php
 session_start();
+require "vendor/autoload.php";
 
 use App\Controller\FoodController;
 use App\Controller\AuthController;
 use App\Controller\UserController;
 
-require "vendor/autoload.php";
 $authController = new AuthController();
 $foodcontroller = new FoodController();
 $userController = new UserController();
