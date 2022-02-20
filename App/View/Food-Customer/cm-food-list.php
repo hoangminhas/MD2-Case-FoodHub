@@ -15,7 +15,7 @@
         <td><?php echo $restaurant->name?></td>
         <td><?php echo $restaurant->phone?></td>
         <td><?php echo $restaurant->email?></td>
-        <td><a href="index.php?page=<?php echo $restaurant->id?>">Menu</a></td>
+        <td><a href="index.php?page=food-list<?php echo $restaurant->id?>">Menu</a></td>
 
     </tr>
     <?php endforeach;?>
